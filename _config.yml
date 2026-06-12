@@ -1,0 +1,21 @@
+title: Paper Website Template
+description: A minimal Jekyll template for research paper project pages.
+keywords: paper website, research, template
+url: "https://frdedynamics.github.io" # e.g., https://example.com
+timezone: UTC
+
+markdown: kramdown
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/

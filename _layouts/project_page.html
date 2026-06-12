@@ -1,0 +1,231 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">{{ page.title }}</h1>
+
+          {% if page.authors %}
+          <div class="is-size-5 publication-authors">
+            {% for author in page.authors %}
+              <span class="author-block">
+                {{- author.name -}}
+                {% if author.affils -%}<sup>{{ author.affils | join: ',' }}</sup>{%- endif -%}
+                {% unless forloop.last -%}, {% endunless -%}
+              </span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if page.affiliations %}
+          <div class="is-size-6 publication-authors affiliations-line">
+            {% for aff in page.affiliations %}
+              <span class="author-block"><sup>{{ aff.id }}</sup> {{ aff.name }}{% unless forloop.last -%}, {% endunless -%}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if page.links or page.paper or page.video or page.code or page.data %}
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              {% for link in page.links %}
+              <span class="link-block">
+                <a href="{{ link.url }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  {% if link.icon %}
+                  <span class="icon">
+                    <i class="{{ link.icon }}"></i>
+                  </span>
+                  {% endif %}
+                  <span>{{ link.label }}</span>
+                </a>
+              </span>
+              {% endfor %}
+
+              {% if page.paper %}
+              <span class="link-block">
+                <a href="{{ page.paper }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              {% endif %}
+
+              {% if page.video %}
+              <span class="link-block">
+                <a href="{{ page.video }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              {% endif %}
+
+              {% if page.code %}
+              <span class="link-block">
+                <a href="{{ page.code }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              {% endif %}
+
+              {% if page.colab %}
+              <span class="link-block">
+                <a href="{{ page.colab }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-infinity"></i>
+                  </span>
+                  <span>Colab</span>
+                  </a>
+              </span>
+              {% endif %}
+
+              {% if page.demo %}
+              <span class="link-block">
+                <a href="{{ page.demo }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-laptop"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+              {% endif %}
+
+              {% if page.cad %}
+              <span class="link-block">
+                <a href="{{ page.cad }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-cubes"></i>
+                  </span>
+                  <span>CAD</span>
+                  </a>
+              </span>
+              {% endif %}
+
+              {% if page.slides %}
+              <span class="link-block">
+                <a href="{{ page.slides }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-powerpoint"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span>
+              {% endif %}
+
+              {% if page.data %}
+              <span class="link-block">
+                <a href="{{ page.data }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+              {% endif %}
+
+              {% if page.arxiv %}
+              <span class="link-block">
+                <a href="{{ page.arxiv }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              {% endif %}
+
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if page.eyecatcher_media %}
+{% assign media = page.eyecatcher_media %}
+<section class="section hero-media-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-10 has-text-centered">
+        {% if media.image %}
+          {% assign src = media.image %}
+          {% if src contains '://' %}
+            {% assign hero_src = src %}
+          {% else %}
+            {% assign hero_src = src | relative_url %}
+          {% endif %}
+          <img class="hero-media-img" src="{{ hero_src }}" alt="{{ media.alt | default: 'Project media' }}">
+        {% elsif media.video %}
+          {% assign vsrc = media.video %}
+          {% if vsrc contains '://' %}
+            {% assign hero_video = vsrc %}
+          {% else %}
+            {% assign hero_video = vsrc | relative_url %}
+          {% endif %}
+          <video class="hero-media-video" controls loop muted playsinline autoplay>
+            <source src="{{ hero_video }}">
+          </video>
+        {% elsif media.embed %}
+          <div class="hero-media-embed">
+            {{ media.embed }}
+          </div>
+        {% endif %}
+        {% if media.caption %}
+          <div class="hero-media-caption content has-text-centered">
+            {{ media.caption | markdownify }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if page.abstract %}
+<section class="section abstract-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="content column is-four-fifths">
+        <h2>Abstract</h2>
+        <div class="content has-text-justified">
+          {{ page.abstract | markdownify }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section main-section">
+  <div class="container is-max-desktop">
+    {% if page.abstract %}
+    <hr class="abstract-separator">
+    {% endif %}
+    <div class="content publication-body">
+      {{ content }}
+    </div>
+  </div>
+</section>
