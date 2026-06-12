@@ -2,28 +2,28 @@
 layout: project_page
 permalink: /
 
-title: On Computable Numbers, with an Application to the Entscheidungsproblem
+title: Sensor Comparison for Multi-Modal Motion Estimation in Upper Body Stroke Rehabilitation
 authors:
-  - name: A. M. Turing
+  - name: Raquel Motzfeldt Tirach
     affils: [1]
-  - name: John Doe
-    affils: [1,2]
+  - name: Gizem Ateş Venås
+    affils: [1]
+  - name: Jeanette Svarstad
+    affils: [2]
+  - name: Runar Tengel Hovland
+    affils: [2]
+  - name: Erik Kyrkjebø
+    affils: [1]
 
 affiliations:
   - id: 1
-    name: King's College, Cambridge
+    name: Dept. of Computer Science, Electrical Eng. and Mathematical Sciences, Western Norway University of Applied Sciences
   - id: 2
-    name: Example University
+    name: Dept. of Health and Caring Sciences, Western Norway University of Applied Sciences
 
 paper: https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf
-video: https://www.youtube.com/results?search_query=turing+machine
-code: https://github.com/topics/turing-machines
-data: https://huggingface.co/docs/datasets
-arxiv: https://arxiv.org/abs/1234.56789
-colab: https://colab.research.google.com/
-demo: https://example.com/demo
-slides: https://example.com/slides.pdf
-cad: https://example.com/cadfile
+code: https://github.com/RaquelMotzfeldtTirach/IMU_and_markers_IK_OpenSim
+data: https://dataverse.no/dataset.xhtml?persistentId=doi:10.18710/4EWI6I
 
 eyecatcher_media:
   image: /static/image/turing_machine.gif
@@ -38,19 +38,7 @@ carousel:
     caption: Placeholder slide for results.
 
 abstract: | 
-  The "computable" numbers may be described briefly as the real
-  numbers whose expressions as a decimal are calculable by finite means.
-  Although the subject of this paper is ostensibly the computable numbers.
-  it is almost equally easy to define and investigate computable functions
-  of an integral variable or a real or computable variable, computable
-  predicates, and so forth. The fundamental problems involved are,
-  however, the same in each case, and I have chosen the computable numbers
-  for explicit treatment as involving the least cumbrous technique. I hope
-  shortly to give an account of the relations of the computable numbers,
-  functions, and so forth to one another. This will include a development
-  of the theory of functions of a real variable expressed in terms of computable
-  numbers. According to my definition, a number is computable
-  if its decimal can be written down by a machine...    
+  In this study, we validate the OpenSim framework for estimating joint angles in stroke rehabilitation, by integrating multi-modal data from inertial measurement units (IMUs) and cameras, demonstrating its potential to enhance biomechanical analyses. We conducted a systematic evaluation of the IMU count and positioning to develop a precise yet cost-effective setup for rehabilitation. We compared five different combinations of IMUs and 2D/3D cameras across 12 upper-body movements performed by 16 healthy participants. The orientation and marker position data were processed using the weighted inverse kinematics solver of the framework. The IMU and stereocamera combination yielded favourable and consistent estimations across all 12 movements and 17 joint angles, with root mean square errors ranging from 4.64 to 43.31 degrees, and an average of 19.9 degrees across recorded movement patterns. This combination resulted in a reduction in the number of required IMUs to three and demonstrated a clear pattern in the sensor placements. The data indicate that IMUs, when combined with a stereocamera, should be positioned on both hands and the torso. This study provides insights into the advantages and limitations of using optical and inertial-based inverse kinematics for upper-body rehabilitation after stroke. 
 ---
 
 
@@ -89,10 +77,10 @@ Turing's main objective in this paper was to investigate the notion of computabi
 
 He used the concept of a universal Turing machine to prove that the set of computable functions is recursively enumerable, meaning it can be listed by an algorithm.
 
-## Significance
+## Next steps
 Turing's paper laid the foundation for the theory of computation and had a profound impact on the development of computer science. The Turing machine became a fundamental concept in theoretical computer science, serving as a theoretical model for studying the limits and capabilities of computation. Turing's work also influenced the development of programming languages, algorithms, and the design of modern computers.
 
-## Citation
+## Citation - ToDo
 ```
 @article{turing1936computable,
   title={On computable numbers, with an application to the Entscheidungsproblem},
